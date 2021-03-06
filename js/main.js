@@ -1,1 +1,1 @@
-// confScreen.createNodes()
+// configScreen.createNodes()

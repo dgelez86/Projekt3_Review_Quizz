@@ -1,12 +1,14 @@
-class confScreen {
+class configScreen {
 
     constructor(difficulty, type, howMany) {
+
         this.difficulty = difficulty
         this.type = type
         this.howMany = howMany
+
     }
 
-    static displayConfScreen() {
+    static displayConfigScreen() {
 
         confScreen.createNodes().then(confScreen.getUserConf)
 
@@ -14,7 +16,7 @@ class confScreen {
 
     static getQuestionsFromAPI() {
 
-        
+        return "questions"
 
     }
 
@@ -101,9 +103,9 @@ class confScreen {
 
     }
 
-    static getUserConf() {
+    static getUserConfig() {
 
-        console.log("getConf")
+        console.log("getConfig")
 
         let dif = document.querySelector("#difficulty").value
         let type = document.querySelector("#difficulty").value
@@ -119,4 +121,4 @@ class endScreen {
 
 }
 
-confScreen.displayConfScreen()
+configScreen.displayConfigScreen()

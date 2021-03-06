@@ -33,7 +33,6 @@ Properties:
 - questions
 
 Methods:
-- pushQuestions() -> save questions in an array
 - displayQuestion() -> creates nodes for question and answers
 - assessQuestion() -> assess if question is correct or incorrect
 - getMoreQuestions() -> display if user wants more questions -> call displayConfScreen()
@@ -49,10 +48,11 @@ Properties:
 - score
 
 Methods:
-- getScore(), addScore()
-- addTime() -> add time of current question to total
+- getTotalTime(), setTotalTime()
+- getQuestionTime(), setQuestiontime()
+- getScore(), setScore()
 
-### Top10
+### Ranking
 
 Properties:
 - top10
