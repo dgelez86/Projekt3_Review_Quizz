@@ -50,12 +50,12 @@ class Question {
 
             questions.printQuestion(questions.arrayQuestions.results[iterator])
             questions.printAnswers(questions.arrayQuestions.results[iterator])
-            questions.printButton()
+            questions.printBackButton()
             iterator++
 
         } else {
 
-            player.saveAnswersChosenOnFirebase()
+            EndScreen.endScreen()
 
         }
         
@@ -95,15 +95,15 @@ class Question {
 
     }
 
-    printButton() {
+    printBackButton() {
 
         let backButtonDiv = document.createElement("div")
         backButtonDiv.classList.add("buttonDiv")
         let backButton = document.createElement("input")
+            backButton.classList.add("buttons")
             backButton.setAttribute("type", "button")
             backButton.setAttribute("value", "Back")
-            backButton.setAttribute("id", "backToConfig")
-            backButton.addEventListener("click", configScreen.createNodes)
+            backButton.addEventListener("click", EndScreen.endScreen)
         backButtonDiv.appendChild(backButton)
         document.querySelector(".wrapper").appendChild(backButtonDiv)
 

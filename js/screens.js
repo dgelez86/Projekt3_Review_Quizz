@@ -1,13 +1,5 @@
 class configScreen {
 
-    // constructor(difficulty, type, howMany) {
-
-    //     this.difficulty = difficulty
-    //     this.type = type
-    //     this.howMany = howMany
-
-    // }
-
     static createNodes() {
 
         configScreen.deletePrevious()
@@ -117,9 +109,9 @@ class configScreen {
         let buttonDiv = document.createElement("div")
             buttonDiv.classList.add("buttonDiv")
         let button = document.createElement("input")
+            button.classList.add("buttons")
             button.setAttribute("type", "button")
             button.setAttribute("value", "agree")
-            button.setAttribute("id", "searchButton")
             button.addEventListener("click", configScreen.getUserConfig)
         buttonDiv.appendChild(button)
         wrapper.appendChild(buttonDiv)
@@ -145,11 +137,47 @@ class configScreen {
 }
 
 
-class endScreen {
+class EndScreen {
 
-    constructor() {
+
+    static endScreen() {
+
+        player.saveUserAnswersOnFirebase()
+        player.questionsAnswered = []
+        player.answersChosen = []
+        iterator = 0
+
+        let displayResultsButtonDiv = document.createElement("div")
+            displayResultsButtonDiv.classList.add("endButtonsDiv")
+        let displayResultsButton = document.createElement("input")
+            displayResultsButton.classList.add("buttons")
+            displayResultsButton.setAttribute("id", "displayResultsButton")
+            displayResultsButton.setAttribute("type", "button")
+            displayResultsButton.setAttribute("value", "display results")
+        displayResultsButtonDiv.appendChild(displayResultsButton)
+        document.querySelector(".wrapper").appendChild(displayResultsButtonDiv)
+        displayResultsButton.addEventListener("click", EndScreen.displayResults)
+
+        let moreQuestionsButtonDiv = document.createElement("div")
+            moreQuestionsButtonDiv.classList.add("endButtonsDiv")
+        let moreQuestionsButton = document.createElement("input")
+            moreQuestionsButton.classList.add("buttons")
+            moreQuestionsButton.setAttribute("id", "moreQuestionsButton")
+            moreQuestionsButton.setAttribute("type", "button")
+            moreQuestionsButton.setAttribute("value", "get more questions")
+        moreQuestionsButtonDiv.appendChild(moreQuestionsButton)
+        document.querySelector(".wrapper").appendChild(moreQuestionsButtonDiv)
+        moreQuestionsButton.addEventListener("click", configScreen.createNodes)
 
     }
+
+    static displayResults() {
+
+        console.log("results")
+
+    }
+
+    
 
 }
 

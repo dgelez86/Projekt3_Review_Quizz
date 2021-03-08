@@ -1,2 +1,2 @@
-let iterator = 0, count = 0
+let iterator = 0, count = 1
 let questions, player

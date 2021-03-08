@@ -37,7 +37,7 @@ class Player {
 
     }
 
-    saveAnswersChosenOnFirebase() {
+    saveUserAnswersOnFirebase() {
 
         let arrayQuestions = []
         player.questionsAnswered.map((el, index) => {
@@ -46,9 +46,9 @@ class Player {
             question.answer = player.answersChosen[index]
             arrayQuestions.push(question)
         })
-        console.log(questions)
 
         firebase.database().ref(`questions${count}`).update(arrayQuestions)
+        count++
 
     }
 
@@ -59,7 +59,7 @@ class Ranking {
 
     constructor() {
 
-        this.top10 = this.makeTop10
+        this.top10 = this.makeTop10()
 
     }
 
