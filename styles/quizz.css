@@ -1,0 +1,98 @@
+@font-face {
+    src: url("../assets/fonts/Potta_One/PottaOne-Regular.ttf");
+    font-family: "Potta One";
+}
+
+body {
+    background-image: url("../assets/img/mobileBackground.jpg");
+    background-size: cover;
+}
+
+input,
+select {
+    background-color: black;
+    color: whitesmoke;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.wrapper {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.title {
+    height: 20%;
+    font-size: 4rem;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+}
+
+.buttonDiv {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.question {
+    height: 25%;
+    font-size: 2rem;
+    font-weight: bolder;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.answers {
+    width: 60%;
+    height: 60%;
+    background-color: rgba(0, 0, 255, 0.5);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.answer {
+    padding: 0rem 2rem;
+    height: 20%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid rgba(0, 0, 255, 0);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.answer:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 255, 0.7);
+    border: 2px solid rgba(0, 0, 255, 1);
+}
+
+#difficulty,
+#type,
+#howMany {
+    width: 30%;
+    padding: 1rem 1.5rem
+}
+
+#howMany {
+    width: 10%;
+}
+
+#searchButton,
+#backToConfig {
+    width: 15%;
+    height: 50%;
+    margin: 0rem 4rem;
+}
+
