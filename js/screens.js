@@ -143,8 +143,11 @@ class EndScreen {
     static endScreen() {
 
         player.saveUserAnswersOnFirebase()
+
+        // Reset variables kept on Firebase
         player.questionsAnswered = []
         player.answersChosen = []
+        player.answersAssessed = []
         iterator = 0
 
         let displayResultsButtonDiv = document.createElement("div")
@@ -173,7 +176,11 @@ class EndScreen {
 
     static displayResults() {
 
-        console.log("results")
+        let results = []
+        for (let i = 0 ; i < count ; i++)
+            results.push(firebase.database().ref(`questions${i}`).on("value", data => data.val()))
+
+        
 
     }
 

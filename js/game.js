@@ -7,6 +7,7 @@ class Player {
         this.score = 0
         this.questionsAnswered = []
         this.answersChosen = []
+        this.answersAssessed = []
 
     }
 
@@ -18,10 +19,22 @@ class Player {
 
         player.questionsAnswered.push(el.question)
         switch (answerID) {
-            case "0": player.answersChosen.push(el.correct_answer); break
-            case "1": player.answersChosen.push(el.incorrect_answers[0]); break
-            case "2": player.answersChosen.push(el.incorrect_answers[1]); break
-            case "3": player.answersChosen.push(el.incorrect_answers[2])
+            case "0": 
+                player.answersChosen.push(el.correct_answer)
+                player.answersAssessed.push(true)
+                break
+            case "1": 
+                player.answersChosen.push(el.incorrect_answers[0])
+                player.answersAssessed.push(false)
+                break
+            case "2": 
+                player.answersChosen.push(el.incorrect_answers[1])
+                player.answersAssessed.push(false)
+                break
+            case "3": 
+                player.answersChosen.push(el.incorrect_answers[2])
+                player.answersAssessed.push(false)
+
         }
         player.assessQuestion(answerID)
 
@@ -29,10 +42,10 @@ class Player {
 
     assessQuestion(answerID) {
 
-        if (answerID == 0) player.score += 5
+        if (answerID === "0") player.score += 5
         else player.score -= 2
-        if (player.questionTime <=10) player.score += 1
-        if (player.questionTime <=20) player.score += 1
+        if (player.questionTime <= 10) player.score += 1
+        if (player.questionTime <= 20) player.score += 1
         Question.displayQuestion()
 
     }
@@ -44,6 +57,7 @@ class Player {
             let question = {}
             question.question = el
             question.answer = player.answersChosen[index]
+            question.assess = player.answersAssessed[index]
             arrayQuestions.push(question)
         })
 
