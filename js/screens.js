@@ -159,7 +159,7 @@ class EndScreen {
             displayResultsButton.setAttribute("value", "display results")
         displayResultsButtonDiv.appendChild(displayResultsButton)
         document.querySelector(".wrapper").appendChild(displayResultsButtonDiv)
-        displayResultsButton.addEventListener("click", EndScreen.displayResults)
+        displayResultsButton.addEventListener("click", () => EndScreen.getAnswersFromFirebase().then(results => EndScreen.displayResults(results)))
 
         let moreQuestionsButtonDiv = document.createElement("div")
             moreQuestionsButtonDiv.classList.add("endButtonsDiv")
@@ -174,17 +174,41 @@ class EndScreen {
 
     }
 
-    static displayResults() {
+    static getAnswersFromFirebase() {
 
-        let results = []
-        for (let i = 0 ; i < count ; i++)
-            results.push(firebase.database().ref(`questions${i}`).on("value", data => data.val()))
+        return new Promise(resolve => {
 
-        
+            let results = []
+            for (let i = 1 ; i < count ; i++)
+                firebase.database().ref(`questions${i}`).on("value", data => results.push(data.val()))
+
+            resolve(results)
+
+        })
 
     }
 
-    
+    static displayResults(results) {
+
+        console.log(results)
+        let results2 = Object.keys(results)
+        console.log(results2)
+        // results = results.reduce((acc, el) => acc.concat(el), [])
+        // results = results.flatMap(el => el)
+        
+        // results.forEach(el => {
+        //     el.forEach(elem => console.log(elem))
+        // })
+
+        console.log("inicio for")
+
+        for (let i = 0 ; i < results.length ; i++)
+            console.log("dentro")
+
+        for (let i of results) console.log("dentro")
+        console.log("fin for")
+
+    }
 
 }
 
